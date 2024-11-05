@@ -1,0 +1,25 @@
+name: Calculator Test CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: NodeJS setup
+        uses: actions/setup-node@v2
+
+      - name: Dependencies setup
+        run: npm install
+
+      - name: Test
+        run: npm test
